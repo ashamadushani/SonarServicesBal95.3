@@ -5544,24 +5544,6 @@ function getSonarIssuesForProject (string project_key, http:HttpClient sonarcon,
     return returnJson;
 }
 
-function insertDataIntodatabase(string sqlQuery, sql:Parameter[] paramsForQuery)(int){
-    endpoint<sql:ClientConnector> sqlEndPoint {
-    }
-    sql:ClientConnector sqlCon = getSQLConnectorForIssuesSonarRelease();
-
-    bind sqlCon with sqlEndPoint;
-
-    log:printDebug("insertDataIntodatabase function got invoked for sqlQuery : " + sqlQuery);
-    int ret=0;
-    try{
-        ret=sqlEndPoint.update(sqlQuery,paramsForQuery);
-    }catch(error err){
-        log:printError(err.msg);
-    }
-    sqlEndPoint.close();
-    return ret;
-}
-
 function getDataFromSonar(http:HttpClient httpCon, string path,json configData)(json){
     endpoint<http:HttpClient> httpEndPoint {
         httpCon;
