@@ -77,7 +77,7 @@ struct YearlySonarIssues{
 
 @http:configuration {
     basePath:"/internal/product-quality/v1.0/sonar",
-    httpsPort:9095,
+    httpsPort:9092,
     keyStoreFile:"${ballerina.home}/bre/security/ballerinaKeystore.p12",
     keyStorePassword:"ballerina",
     certPassword:"ballerina",
